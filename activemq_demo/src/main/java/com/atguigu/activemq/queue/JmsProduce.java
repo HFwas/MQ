@@ -6,9 +6,24 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 public class JmsProduce {
 
-	public static final String ACTIVEMQ_URL = "tcp://192.168.136.137:61616";
+	public static final String ACTIVEMQ_URL = "tcp://192.168.43.128:61616";
 	public static final String QUEUE_NAME = "queue01";
-
+	
+	 /**
+     * 消息的三种案例：
+     *
+     * 1.先生产，只启动1号消费者。问题：1号消费者能消费消息吗？ yes
+     *
+     * 2.先生产，先启动1号消费者再启动2号消费者，问题：2号消费者还能消费消息吗？
+     *  2.1 1号可以消费吗？  yes
+     *  2.2 2号可以消费吗？ NO
+     *
+     * 3.先启动2个消费者，再生产6条消息，请问，消费情况如何？
+     *   3.1 2个消费者都有6条
+     *   3.2 先到先得  6条全部给一个
+     *   3.3 一人一半   yes
+     *   消息中间件有点像负载均衡轮询思想，若有两个接收者就一人一个消息，直到最后没有消息，就平均分
+     */
 	public static void main(String[] args) throws JMSException {
 		// 1.创建连接工场,按照给定的URL地址，采用默认用户名和密码
 		ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory(ACTIVEMQ_URL);
