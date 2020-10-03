@@ -7,8 +7,10 @@ import javax.jms.*;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 public class JmsConsumer {
-	public static final String ACTIVEMQ_URL = "tcp://192.168.43.128:61616";
-    public static final String QUEUE_NAME = "queue01";
+	//public static final String ACTIVEMQ_URL = "tcp://192.168.43.128:61616";
+	public static final String ACTIVEMQ_URL = "nio://192.168.43.128:61608";
+	//public static final String QUEUE_NAME = "queue01";
+    public static final String QUEUE_NAME = "nioauto";
  
     public static void main(String[] args) throws JMSException, IOException {
         //1.创建连接工场,按照给定的URL地址，采用默认用户名和密码

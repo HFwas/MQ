@@ -6,8 +6,10 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 public class JmsProduce {
 
-	public static final String ACTIVEMQ_URL = "tcp://192.168.43.128:61616";
-	public static final String QUEUE_NAME = "queue01";
+	//public static final String ACTIVEMQ_URL = "tcp://192.168.43.128:61616";
+	public static final String ACTIVEMQ_URL = "nio://192.168.43.128:61608";
+	//public static final String QUEUE_NAME = "queue01";
+	public static final String QUEUE_NAME = "nioauto";
 	
 	 /**
      * 消息的三种案例：
